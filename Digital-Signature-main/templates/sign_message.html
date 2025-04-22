@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Sign Message</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sign Message</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="box">
+            <h3>Original Message:</h3>
+            <p>{{ message }}</p>
+        </div>
+
+        <form method="POST">
+            <button type="submit" class="btn">Sign the Message</button>
+        </form>
+
+        {% if signature %}
+        <div class="box">
+            <h3>Signature:</h3>
+            <p id="signature">{{ signature }}</p>
+            <button class="see-more-btn" onclick="toggleVisibility('signature')">See More</button>
+        </div>
+        <a href="{{ url_for('verify_signature') }}" class="btn">Next: Verify Signature</a>
+        {% endif %}
+    </div>
+
+    <script>
+        // Toggle visibility of long content (keys and signatures)
+        function toggleVisibility(elementId) {
+            const element = document.getElementById(elementId);
+            const btn = element.nextElementSibling; // "See More" button
+            if (element.style.maxHeight) {
+                element.style.maxHeight = null; // Collapse it
+                btn.textContent = "See More";
+            } else {
+                element.style.maxHeight = "200px"; // Set a reasonable max-height for expansion
+                btn.textContent = "See Less";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

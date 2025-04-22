@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Generate Keys</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Generate Keys</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <textarea name="message" placeholder="Enter your message here"></textarea><br>
+            <button type="submit" class="btn">Generate Keys</button>
+        </form>
+
+        {% if public_key %}
+        <div class="box">
+            <h3>Public Key:</h3>
+            <p id="public-key" class="key-text">{{ public_key }}</p>
+            <button class="see-more-btn" onclick="toggleVisibility('public-key')">See More</button>
+        </div>
+        <div class="box">
+            <h3>Private Key:</h3>
+            <p id="private-key" class="key-text">{{ private_key }}</p>
+            <button class="see-more-btn" onclick="toggleVisibility('private-key')">See More</button>
+        </div>
+        <a href="{{ url_for('sign_message') }}" class="btn">Next: Sign Message</a>
+        {% endif %}
+    </div>
+
+    <script>
+        // Toggle visibility of long content (keys and signatures)
+        function toggleVisibility(elementId) {
+            const element = document.getElementById(elementId);
+            const btn = element.nextElementSibling; // "See More" button
+            if (element.style.maxHeight) {
+                element.style.maxHeight = null; // Collapse it
+                btn.textContent = "See More";
+            } else {
+                element.style.maxHeight = "200px"; // Expand it
+                btn.textContent = "See Less";
+            }
+        }
+    </script>
+</body>
+
+</html>

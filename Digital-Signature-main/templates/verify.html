@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Verify Signature</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Verify Signature</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <textarea name="message" placeholder="Enter the message"></textarea><br>
+            <textarea name="signature" placeholder="Paste the signature here"></textarea><br>
+            <button type="submit" class="btn">Verify Signature</button>
+        </form>
+
+        {% if valid %}
+        <div class="box">
+            <h3>Verification Result:</h3>
+            <p>The signature is valid!</p>
+            <h3>Original Message:</h3>
+            <p>{{ original_message }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Restart Button -->
+        <a href="{{ url_for('restart_process') }}" class="btn">Restart Process</a>
+    </div>
+</body>
+</html>

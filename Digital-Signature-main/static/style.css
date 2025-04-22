@@ -1,0 +1,203 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #87CEEB, #00BFFF);
+    /* Water/Sky Gradient */
+    color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings */
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Textareas */
+textarea {
+    width: 100%;
+    max-width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    background: #f9f9f9;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+textarea:focus {
+    border-color: #1E90FF;
+    /* Blue border when focused */
+    background-color: #e0f7ff;
+    /* Light blue background */
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #1E90FF;
+    /* Sky blue */
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.btn:hover {
+    background: #4682B4;
+    /* Hover effect with dark blue */
+    transform: translateY(-2px);
+    /* Lift effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(2px);
+    /* Push effect on click */
+}
+
+.copy-btn {
+    background-color: #FF5733;
+    /* Red-orange for copy buttons */
+}
+
+.copy-btn:hover {
+    background-color: #FF4500;
+    /* Darker red-orange */
+}
+
+/* Updated CSS */
+
+/* Box for Public/Private Keys */
+.box {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+    /* Ensure content wraps properly */
+}
+
+/* Ensure long strings break properly */
+.key-text {
+    font-family: monospace;
+    color: #333;
+    word-wrap: break-word;
+    /* Wrap long text */
+    white-space: pre-wrap;
+    /* Break lines within long text */
+    max-width: 100%;
+    overflow-wrap: break-word;
+    /* Handle long strings better */
+    display: block;
+    transition: max-height 0.3s ease-out;
+    /* Smooth transition for expanding */
+    max-height: 200px;
+    /* Update max-height to 200px */
+    overflow: hidden;
+    /* Hide content that exceeds max height */
+}
+
+/* See More Button for long content */
+.see-more-btn {
+    background-color: #20B2AA;
+    /* Light sea green */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.see-more-btn:hover {
+    background-color: #3CB371;
+    /* Darker sea green on hover */
+}
+
+/* Alert Messages */
+.alert {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Floating Action Button (FAB) */
+.fab-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #1E90FF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.fab-btn:hover {
+    background-color: #4682B4;
+    transform: translateY(-5px);
+    /* Lift effect */
+}
+
+body:focus {
+    outline: none;
+}
